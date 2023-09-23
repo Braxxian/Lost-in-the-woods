@@ -48,7 +48,7 @@ print()
 choice1 = ""
 while choice1 not in {"A", "a", "B", "a"}:
 
-    choice1 = getpass.getpass(Fore.GREEN +
+    choice1 = getpass.getpass(Fore.YELLOW +
                               "Press 'A' to enter or 'B' to quit\n".center(80, ' ')).upper()
 if choice1 == "A":
     text = "storyfiles\\intro_choiceA.txt"
