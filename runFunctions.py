@@ -1,5 +1,9 @@
-
+import time
+import colorama
+from colorama import Fore, Back
 # center text
+
+
 def center_text(text, terminal_width=80):
     padding = (terminal_width - len(text)) // 2
     centered_text = " " * padding + text
@@ -16,8 +20,8 @@ def get_text(text):
             for line in lines:
                 stripped_line = line.strip()
                 centered_line = center_text(stripped_line, terminal_width=80)
-                print(centered_line)
-                time.sleep(0.5)
+                print(Fore.LIGHTGREEN_EX + centered_line)
+                time.sleep(0.25)
 
     except FileNotFoundError:
         print("File not found")

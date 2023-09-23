@@ -6,6 +6,7 @@ from colorama import Fore, Back
 from runFunctions import center_text, get_text
 colorama.init(autoreset=True)
 
+
 # ascii heading
 color = "green"
 title = (figlet_format("Dare you enter ? !", font="doom"))
@@ -45,11 +46,12 @@ print()
 
 choice1 = ""
 while choice1 not in {"A", "a", "B", "a"}:
+
     choice1 = input(Fore.GREEN +
                     "Press 'A' to enter or 'B' to quit\n".center(80, ' ')).upper()
 if choice1 == "A":
-    text = "notes\\step3choiceA.txt"
+    text = "storyfiles\\intro_choiceA.txt"
     get_text(text)
 else:
-    text = "notes\\step4choiceB.txt"
+    text = "storyfiles\\intro_choiceB.txt"
     get_text(text)
