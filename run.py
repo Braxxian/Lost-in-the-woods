@@ -1,3 +1,4 @@
+import getpass
 import time
 from pyfiglet import figlet_format
 from termcolor import colored, cprint
@@ -47,8 +48,8 @@ print()
 choice1 = ""
 while choice1 not in {"A", "a", "B", "a"}:
 
-    choice1 = input(Fore.GREEN +
-                    "Press 'A' to enter or 'B' to quit\n".center(80, ' ')).upper()
+    choice1 = getpass.getpass(Fore.GREEN +
+                              "Press 'A' to enter or 'B' to quit\n".center(80, ' ')).upper()
 if choice1 == "A":
     text = "storyfiles\\intro_choiceA.txt"
     get_text(text)
