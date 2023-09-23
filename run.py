@@ -3,21 +3,21 @@ from pyfiglet import figlet_format
 from termcolor import colored, cprint
 import colorama
 from colorama import Fore, Back
-from runFunctions import center_text
+from runFunctions import center_text, get_text
 colorama.init(autoreset=True)
 
 # ascii heading
 color = "green"
-title = (figlet_format("Welcome", font="doom"))
+title = (figlet_format("Dare you enter ? !", font="doom"))
 cprint(title, color)
 
 # game title
 print(Back.LIGHTGREEN_EX + Fore.BLACK +
-      "*------------------------*".center(40, ' '))
+      "*------------------------*".center(80, ' '))
 print(Back.LIGHTGREEN_EX + Fore.BLACK +
-      "Lost in the Haunted Wood".center(40, ' '))
+      "Lost in the Haunted Wood".center(80, ' '))
 print(Back.LIGHTGREEN_EX + Fore.BLACK +
-      "*------------------------*".center(40, ' '))
+      "*------------------------*".center(80, ' '))
 print()
 
 # intro text
@@ -41,3 +41,15 @@ for letter in center_line3:
     print(Fore.LIGHTGREEN_EX + letter, end='', flush=True)
     time.sleep(0.05)
 print()
+print()
+
+choice1 = ""
+while choice1 not in {"A", "a", "B", "a"}:
+    choice1 = input(Fore.GREEN +
+                    "Press 'A' to enter or 'B' to quit\n".center(80, ' ')).upper()
+if choice1 == "A":
+    text = "notes\\step3choiceA.txt"
+    get_text(text)
+else:
+    text = "notes\\step4choiceB.txt"
+    get_text(text)
