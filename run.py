@@ -77,8 +77,8 @@ while choice1 not in {"A", "a", "B", "a"}:
     choice1 = getpass.getpass(Fore.YELLOW +
                               "Press 'A' to enter or 'B' to quit\n".center(80, ' ')).upper()
 if choice1 == "A":
-    text = "storyfiles\\intro_choiceA.txt\n"
+    text = "storyfiles\\intro_choiceA.txt"
     get_text(text)
 else:
-    text = "storyfiles\\intro_choiceB.txt\n"
+    text = "storyfiles\\intro_choiceB.txt"
     get_text(text)
