@@ -4,6 +4,7 @@ from pyfiglet import figlet_format
 from termcolor import cprint
 import colorama
 from colorama import Fore, Back
+
 colorama.init(autoreset=True)
 
 # center text
@@ -74,11 +75,13 @@ print()
 choice1 = ""
 while choice1 not in {"A", "a", "B", "a"}:
 
-    choice1 = getpass.getpass(Fore.YELLOW +
-                              "Press 'A' to enter or 'B' to quit\n".center(80, ' ')).upper()
+    choice1 = getpass.getpass(
+        Fore.YELLOW +
+        "Press 'A' to enter or 'B' to quit".center(80, ' ')
+    ).upper()
 if choice1 == "A":
     text = "storyfiles\\intro_choiceA.txt"
     get_text(text)
 else:
-    text = "storyfiles\\intro_choiceB.txt"
+    text = "storyfiles\\intro_choiceA.txt"
     get_text(text)
