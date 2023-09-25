@@ -4,27 +4,8 @@ from pyfiglet import figlet_format
 from termcolor import cprint
 import colorama
 from colorama import Fore, Back
-from game_text import adventure_text
+from game_text import adventure_text, center_text, get_text
 colorama.init(autoreset=True)
-
-
-# center text
-
-
-def center_text(text, terminal_width=80):
-    padding = (terminal_width - len(text)) // 2
-    centered_text = " " * padding + text
-    return centered_text
-
-# read and print text
-
-
-def get_text(text):
-    for line in text.splitlines():
-        stripped_line = line.strip()
-        centered_line = center_text(stripped_line, terminal_width=80)
-        print(Fore.LIGHTGREEN_EX + centered_line)
-        time.sleep(0.25)
 
 
 # ascii heading
@@ -73,13 +54,13 @@ def return_to_start():
         print("Display interrupted by user")
 
 
-choice1 = ""
-while choice1 not in {"A", "a", "B", "a"}:
+step1 = ""
+while step1 not in {"A", "a", "B", "a"}:
     try:
-        choice1 = getpass.getpass(
+        step1 = getpass.getpass(
             Fore.YELLOW +
             "Press 'A' to enter or 'B' to quit".center(80, ' ')).upper()
-        if choice1 == "A":
+        if step1 == "A":
             text = adventure_text["intro_choiceA"]
             get_text(text)
             print()
@@ -103,6 +84,22 @@ while step2 not in {"A", "a", "B", "a"}:
             get_text(text)
         else:
             text = adventure_text["step2_choiceB"]
+            get_text(text)
+    except KeyboardInterrupt:
+        print("Display interrupted by user")
+
+step3 = ""
+while step3 not in {"A", "a", "B", "a"}:
+    try:
+        step3 = getpass.getpass(
+            Fore.YELLOW +
+            "Press 'A' to run or 'B' to investigate".center(80, ' ')).upper()
+        print()
+        if step3 == "A":
+            text = adventure_text["step3_choiceA"]
+            get_text(text)
+        else:
+            text = adventure_text["step3_choiceB"]
             get_text(text)
     except KeyboardInterrupt:
         print("Display interrupted by user")
