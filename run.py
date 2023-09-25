@@ -64,16 +64,45 @@ for letter in center_line3:
 print()
 print()
 
+
+def return_to_start():
+    try:
+        text = adventure_text["intro_choiceB"]
+        get_text(text)
+    except KeyboardInterrupt:
+        print("Display interrupted by user")
+
+
 choice1 = ""
 while choice1 not in {"A", "a", "B", "a"}:
+    try:
+        choice1 = getpass.getpass(
+            Fore.YELLOW +
+            "Press 'A' to enter or 'B' to quit".center(80, ' ')).upper()
+        if choice1 == "A":
+            text = adventure_text["intro_choiceA"]
+            get_text(text)
+            print()
+        else:
+            text = adventure_text["intro_choiceB"]
+            get_text(text)
+            print()
+    except KeyboardInterrupt:
+        print("Display interrupted by user")
 
-    choice1 = getpass.getpass(
-        Fore.YELLOW +
-        "Press 'A' to enter or 'B' to quit".center(80, ' ')
-    ).upper()
-if choice1 == "A":
-    text = adventure_text["intro_choiceA"]
-    get_text(text)
-else:
-    text = adventure_text["intro_choiceB"]
-    get_text(text)
+
+step2 = ""
+while step2 not in {"A", "a", "B", "a"}:
+    try:
+        step2 = getpass.getpass(
+            Fore.YELLOW +
+            "Press 'A' to go right or 'B' to go left".center(80, ' ')).upper()
+        print()
+        if step2 == "A":
+            text = adventure_text["step2_choiceA"]
+            get_text(text)
+        else:
+            text = adventure_text["step2_choiceB"]
+            get_text(text)
+    except KeyboardInterrupt:
+        print("Display interrupted by user")

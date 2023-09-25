@@ -12,10 +12,18 @@
     <style>
         
         body {
-            background: url(../assets/images/woods.jpg) no-repeat;
-            background-size: cover;
+            
             font-family: Arial;
             
+        }
+        #container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: 120px;
+            background: url(../assets/images/woods.jpg) no-repeat;
+            background-size: cover;
         }
 
         /**
@@ -171,7 +179,9 @@
         }
     </style>
 </head>
+<div id="container">
+    @{body}
+</div>
 
-@{body}
 
 </html>
