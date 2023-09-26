@@ -56,10 +56,34 @@ def start_game():
                 "Press 'A' to go right or B for left".center(80, ' ')).upper()
             if user_choice == "A":
                 branch_a()
-                break
+
+                play_again = input(
+                    Fore.YELLOW +
+                    "Play again? (y/n):".center(80, ' ')).lower()
+
+                if play_again == 'yes':
+                    start_game()
+                else:
+                    goodbye = "A wise choice, few who enter the wood ever live"
+                    center_bye = center_text(goodbye)
+                    print(Fore.YELLOW + center_bye)
+
+                    break
 
             elif user_choice == "B":
                 branch_b()
+
+                play_again = input(
+                    Fore.YELLOW +
+                    "Play again? (y/n):".center(80, ' ')).lower()
+
+                if play_again == 'yes':
+                    start_game()
+                else:
+                    goodbye = "A wise choice, few who enter the wood ever live"
+                    center_bye = center_text(goodbye)
+                    print(Fore.YELLOW + center_bye)
+
                 break
             else:
                 clear_terminal()
