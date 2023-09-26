@@ -1,3 +1,4 @@
+import sys
 import os
 import getpass
 import time
@@ -52,8 +53,11 @@ adventure_text = {
         suddenly blocked by a rabid bear, which lunges at you! The Jaguar leaps
         to the aid of his rescuer and the bear, out-matched,
         retreats back into the wood
-        """
-
+        """,
+    "safe_home":
+    """Your trusty cat companion guards you to the end of the wood.
+    congratulations! you survived ! You make it safely back home,
+    """
 
 }
 
@@ -73,7 +77,7 @@ def get_text(text):
         stripped_line = line.strip()
         centered_line = center_text(stripped_line, terminal_width=80)
         print(Fore.LIGHTGREEN_EX + centered_line)
-        time.sleep(0.25)
+        time.sleep(0.5)
 
 # credit: for clear_terminal
 # fellow student 'Oleksy Lazarenko'
@@ -100,19 +104,25 @@ def replay():
         if play_again == 'y':
             start_game()
         else:
+            print(Fore.YELLOW +
+                  "-------------------------------------------".center(80, ' '))
             goodbye = "A wise choice, few who enter the wood ever live"
             center_bye = center_text(goodbye)
             print(Fore.YELLOW + center_bye)
-
-        clear_terminal()
+            print(Fore.YELLOW +
+                  "-------------------------------------------".center(80, ' '))
+            sys.exit()
     except ValueError:
         print("Please choose 'y' or 'n'")
     except KeyboardInterrupt:
         print("program interrupted by user")
+
+
 # branch 'a' functions
 
 
 def goblin():
+    print()
     text = adventure_text["goblin"]
     get_text(text)
 
@@ -131,7 +141,6 @@ def goblin():
                 get_text(text)
                 replay()
 
-                break
         except KeyboardInterrupt:
             print("Display interrupted by user")
 
@@ -159,7 +168,16 @@ def trap():
         except KeyboardInterrupt:
             print("Display interrupted by user")
     return
-# Define functions for each branch of the story
+
+
+def safe_home():
+    print()
+    text = adventure_text["safe_home"]
+    get_text(text)
+    replay()
+# functions for each branch of the story
+
+# branch a
 
 
 def branch_a_step(step):
@@ -174,16 +192,21 @@ def branch_a_step(step):
 
     return
 
+# branch b
+
 
 def branch_b_step(step):
     if step == 1:
         ghost()
+        replay()
 
     elif step == 2:
         witch()
+        replay()
 
     elif step == 3:
         slave()
+        replay()
 
     return
 
@@ -192,15 +215,15 @@ def branch_b_step(step):
 
 
 def branch_a():
-    for step in range(1, 3):
+    for step in range(1, 4):
         branch_a_step(step)
 
 
 def branch_b():
-    for step in range(1, 3):
+    for step in range(1, 4):
         branch_b_step(step)
 
-# start function
+# start game function
 
 
 def start_game():
@@ -238,12 +261,12 @@ def start_game():
     for letter in center_line3:
         print(Fore.LIGHTGREEN_EX + letter, end='', flush=True)
         time.sleep(0.05)
-    print()
 
     # get user input to invoke gameplay functions
     user_choice = ""
     while user_choice not in {"A", "B"}:
         try:
+            print()
             user_choice = getpass.getpass(
                 Fore.YELLOW +
                 "Press 'A' to go right or B for left".center(80, ' ')).upper()
