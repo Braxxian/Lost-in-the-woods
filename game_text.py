@@ -5,6 +5,7 @@ from pyfiglet import figlet_format
 from termcolor import cprint
 import colorama
 from colorama import Fore, Back
+from run import start_game
 colorama.init(autoreset=True)
 
 adventure_text = {
@@ -64,6 +65,24 @@ def clear_terminal():
 def branch_a_step(step):
     print("branch A works")
 
+    play_again = input("Do you want to play again? (yes/no): ").lower()
+
+    if play_again == 'yes':
+        start_game()
+    else:
+        print("Thanks for playing!")
+
+    return
+
 
 def branch_b_step(step):
     print("branch B works")
+
+    play_again = input("Do you want to play again? (yes/no): ").lower()
+
+    if play_again == 'yes':
+        start_game()
+    else:
+        print("Thanks for playing!")
+
+    return
