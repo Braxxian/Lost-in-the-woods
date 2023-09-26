@@ -20,27 +20,39 @@ adventure_text = {
 
     "goblin_live":
     """You take the rabbit and start eating while hastily making your
-    way further along the path before anyone returns
+    way further along the path before anyone returns.Looking over your
+    shoulder you see an angry goblin by the fire.That was a close one!
     """,
 
     "goblin_dead":
-    """you call out loudly 'Hellooooo', you hear running footsteps,
+    """You call out loudly 'Hellooooo', you hear running footsteps,
     a hideous goblin, brandishing a sharp knife, charges toward
     you. 'Rabbit thief!' he cries as the steely blade pierces your
     heart. You have died.
     """,
 
     "trap":
-        """A wise choice, few who enter the wood
-        ever make it out alive or with their sanity intact
-        Goodbye!""",
-
-    "safe":
-        """The path rises steeply and becomes ever more narrow,
-        close to the edge of a steep drop, you are startled by
-        the sound of a piercing scream. Do you run for your life
-        or investigate the source of the scream?
+        """Further along you hear a pitiful cry.As you approach the source
+        of the sound, you see a large jaguar caught in a steel trap. It looks
+        in a lot of pain. Will you [A]approach and set it free or[B] keep your
+        distance and move on?
         """,
+
+    "trap_dead":
+        """You felt sorry for the poor creature, but it is a big, dangerous
+        beast. Travelling further down the way your progress is halted by
+        an angry black bear. Frothing at the mouth it looks rabid! As it tears
+        into your flesh, your last thought is how if you had a jaguar friend
+        you might have survived.
+        """,
+    "trap_live":
+        """As fearsome a sight as the cat is, you are overcome with compassion
+        and bravely approach. The jaguar seems to sense your good intention and
+        gratefully allows you to free him. Further down the way, your path is
+        suddenly blocked by a rabid bear, which lunges at you! The Jaguar leaps
+        to the aid of his rescuer and the bear, out-matched,
+        retreats back into the wood
+        """
 
 
 }
@@ -76,6 +88,27 @@ def clear_terminal():
     elif os.name == 'nt':
         os.system('cls')
 
+# play again or end program
+
+
+def replay():
+    try:
+        play_again = getpass.getpass(
+            Fore.YELLOW +
+            "Play again? (y/n):".center(80, ' ')).lower()
+
+        if play_again == 'y':
+            start_game()
+        else:
+            goodbye = "A wise choice, few who enter the wood ever live"
+            center_bye = center_text(goodbye)
+            print(Fore.YELLOW + center_bye)
+
+        clear_terminal()
+    except ValueError:
+        print("Please choose 'y' or 'n'")
+    except KeyboardInterrupt:
+        print("program interrupted by user")
 # branch 'a' functions
 
 
@@ -96,9 +129,37 @@ def goblin():
             else:
                 text = adventure_text["goblin_dead"]
                 get_text(text)
+                replay()
+
                 break
         except KeyboardInterrupt:
             print("Display interrupted by user")
+
+
+def trap():
+    text = adventure_text["trap"]
+    get_text(text)
+
+    choice = ""
+    while choice not in {"A", "B"}:
+        try:
+            choice = getpass.getpass(
+                Fore.YELLOW +
+                "Type 'A' or 'B'".center(80, ' ')).upper()
+            print()
+            if choice == "A":
+                text = adventure_text["trap_live"]
+                get_text(text)
+            else:
+                text = adventure_text["trap_dead"]
+                get_text(text)
+                replay()
+
+                break
+        except KeyboardInterrupt:
+            print("Display interrupted by user")
+    return
+# Define functions for each branch of the story
 
 
 def branch_a_step(step):
@@ -126,11 +187,11 @@ def branch_b_step(step):
 
     return
 
-# Define functions for each branch of the story
+
+# Get steps for each branch
 
 
 def branch_a():
-    # Get steps for branch
     for step in range(1, 3):
         branch_a_step(step)
 
@@ -179,6 +240,7 @@ def start_game():
         time.sleep(0.05)
     print()
 
+    # get user input to invoke gameplay functions
     user_choice = ""
     while user_choice not in {"A", "B"}:
         try:
@@ -188,36 +250,13 @@ def start_game():
             if user_choice == "A":
                 branch_a()
 
-                play_again = getpass.getpass(
-                    Fore.YELLOW +
-                    "Play again? (y/n):".center(80, ' ')).lower()
-
-                if play_again == 'yes':
-                    start_game()
-                else:
-                    goodbye = "A wise choice, few who enter the wood ever live"
-                    center_bye = center_text(goodbye)
-                    print(Fore.YELLOW + center_bye)
-
-                    break
+                replay()
 
             elif user_choice == "B":
                 branch_b()
 
-                play_again = getpass.getpass(
-                    Fore.YELLOW +
-                    "Play again? (y/n):".center(80, ' ')).lower()
+                replay()
 
-                if play_again == 'yes':
-                    start_game()
-                else:
-                    goodbye = "A wise choice, few who enter the wood ever live"
-                    center_bye = center_text(goodbye)
-                    print(Fore.YELLOW + center_bye)
-
-                break
-            else:
-                clear_terminal()
         except ValueError:
             print("Please choose 'A' or 'B'")
         except KeyboardInterrupt:
