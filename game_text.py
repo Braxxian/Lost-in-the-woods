@@ -1,5 +1,37 @@
+import os
+import getpass
 import time
-from colorama import Fore
+from pyfiglet import figlet_format
+from termcolor import cprint
+import colorama
+from colorama import Fore, Back
+colorama.init(autoreset=True)
+
+adventure_text = {
+    "intro_choiceA":
+        """You know you've been here before, in a dream maybe ?
+        The dark wood rustles in the night wind
+        rubbing your eyes, you see two paths, dimly lit in the moonlight
+        Will you go left or right?""",
+
+    "intro_choiceB":
+        """A wise choice, few who enter the wood
+        ever make it out alive or with their sanity intact
+        Goodbye!""",
+
+    "step2_choiceA":
+        """The path rises steeply and becomes ever more narrow,
+        close to the edge of a steep drop, you are startled by
+        the sound of a piercing scream. Do you run for your life
+        or investigate the source of the scream?
+        """,
+    "step2_choiceB":
+    """After a while the path levels out and turns into a small
+    clearing. There is a small campfire and a cooked rabbit on
+    a spit. Do you eat the rabbit or call out if anyone is nearby?
+    """
+}
+
 # center text
 
 
@@ -19,23 +51,19 @@ def get_text(text):
         time.sleep(0.25)
 
 
-adventure_text = {
-    "intro_choiceA":
-        """You know you've been here before, in a dream maybe ?
-        The dark wood rustles in the night wind
-        rubbing your eyes, you see two paths, dimly lit in the moonlight
-        Will you go left or right?""",
+def clear_terminal():
+    """
+    Check the operating system and use the appropriate clear command
+    """
+    if os.name == 'posix':
+        os.system('clear')
+    elif os.name == 'nt':
+        os.system('cls')
 
-    "intro_choiceB":
-        """A wise choice, few who enter the wood
-        ever make it out alive or with their sanity intact
-        Goodbye!""",
 
-    "step2_choiceA":
-        """The path rises steeply and becomes ever more narrow,
-        close to the edge of a steep drop, you are startled by
-        the sound of a piercing scream. Do you run for your life
-        or investigate the source of the scream?
-        """
+def branch_a_step(step):
+    print("branch A works")
 
-}
+
+def branch_b_step(step):
+    print("branch B works")
