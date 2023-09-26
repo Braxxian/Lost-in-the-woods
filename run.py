@@ -1,11 +1,10 @@
-import os
 import getpass
 import time
 from pyfiglet import figlet_format
 from termcolor import cprint
 import colorama
 from colorama import Fore, Back
-from game_text import adventure_text, center_text, get_text, clear_terminal
+from game_text import center_text, clear_terminal
 from game_text import branch_a_step, branch_b_step
 colorama.init(autoreset=True)
 
@@ -46,10 +45,9 @@ def start_game():
         print(Fore.LIGHTGREEN_EX + letter, end='', flush=True)
         time.sleep(0.05)
     print()
-    print()
 
     user_choice = ""
-    while user_choice not in {"A", "a", "B", "b"}:
+    while user_choice not in {"A", "B"}:
         try:
             user_choice = getpass.getpass(
                 Fore.YELLOW +
@@ -57,7 +55,7 @@ def start_game():
             if user_choice == "A":
                 branch_a()
 
-                play_again = input(
+                play_again = getpass.getpass(
                     Fore.YELLOW +
                     "Play again? (y/n):".center(80, ' ')).lower()
 
@@ -73,7 +71,7 @@ def start_game():
             elif user_choice == "B":
                 branch_b()
 
-                play_again = input(
+                play_again = getpass.getpass(
                     Fore.YELLOW +
                     "Play again? (y/n):".center(80, ' ')).lower()
 
@@ -95,13 +93,14 @@ def start_game():
 
 # Define functions for each branch of the story
 def branch_a():
+    # Get steps for branch
     for step in range(1, 3):
-        branch_a_step(step)  # Invoke the function from adventure.py
+        branch_a_step(step)
 
 
 def branch_b():
     for step in range(1, 3):
-        branch_b_step(step)  # Invoke the function from adventure.py
+        branch_b_step(step)
 
 
 # credit: https://www.geeksforgeeks.org/what-does-the-if-__name__-__main__-do/
