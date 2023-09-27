@@ -140,7 +140,7 @@ def goblin():
             else:
                 text = adventure_text["goblin_dead"]
                 get_text(text)
-
+                replay()
         except KeyboardInterrupt:
             print("Display interrupted by user")
 
@@ -164,8 +164,8 @@ def trap():
             else:
                 text = adventure_text["trap_dead"]
                 get_text(text)
+                replay()
 
-                break
         except KeyboardInterrupt:
             print("Display interrupted by user")
     return
@@ -177,6 +177,8 @@ def safe_home():
     print()
     text = adventure_text["safe_home"]
     get_text(text)
+    print()
+
 
 # loop through steps for each branch
 # if player still alive
@@ -199,7 +201,6 @@ def branch_b():
 def branch_a_step(step):
     if step == 1:
         goblin()
-        replay()
 
     elif step == 2:
         trap()
