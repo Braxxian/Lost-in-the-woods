@@ -135,7 +135,7 @@ def replay():
 
         if play_again == 'y':
             start_game()
-        else:
+        elif play_again == 'n':
             print(Fore.YELLOW +
                   "-----------------------------------------".center(80, ' '))
             goodbye = "A wise choice, few who enter the wood ever live"
@@ -157,12 +157,12 @@ def player_choice(alive_text, dead_text):
         try:
             choice = getpass.getpass(
                 Fore.YELLOW +
-                "Type 'A' or 'B'".center(80, ' ')).upper()
+                "Make your choice 'A' or 'B'".center(80, ' ')).upper()
             print()
             if choice == "A":
                 text = adventure_text[alive_text]
                 get_text(text)
-            else:
+            elif choice == "B":
                 text = adventure_text[dead_text]
                 get_text(text)
                 replay()
