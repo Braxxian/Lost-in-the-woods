@@ -98,17 +98,15 @@ adventure_text = {
 
 }
 
+
 # center text
-
-
 def center_text(text, terminal_width=80):
     padding = (terminal_width - len(text)) // 2
     centered_text = " " * padding + text
     return centered_text
 
+
 # read and print text
-
-
 def get_text(text):
     for line in text.splitlines():
         stripped_line = line.strip()
@@ -116,10 +114,8 @@ def get_text(text):
         print(Fore.LIGHTGREEN_EX + centered_line)
         time.sleep(0.5)
 
-# credit: for clear_terminal
-# fellow student 'Oleksy Lazarenko'
 
-
+# credit: for clear_terminal: fellow student 'Oleksy Lazarenko'
 def clear_terminal():
     """
     Check the operating system and use the appropriate clear command
@@ -129,9 +125,8 @@ def clear_terminal():
     elif os.name == 'nt':
         os.system('cls')
 
+
 # play again or end program
-
-
 def replay():
     try:
         play_again = getpass.getpass(
@@ -155,6 +150,28 @@ def replay():
         print("program interrupted by user")
 
 
+#  get player input and print text response
+def player_choice(alive_text, dead_text):
+    choice = ""
+    while choice not in {"A", "B"}:
+        try:
+            choice = getpass.getpass(
+                Fore.YELLOW +
+                "Type 'A' or 'B'".center(80, ' ')).upper()
+            print()
+            if choice == "A":
+                text = adventure_text[alive_text]
+                get_text(text)
+            else:
+                text = adventure_text[dead_text]
+                get_text(text)
+                replay()
+        except ValueError:
+            print("invalid input, please choose 'A' or 'B' ")
+        except KeyboardInterrupt:
+            print("Display interrupted by user")
+
+
 # branch 'a'  encounter functions
 
 # goblin encounter 1
@@ -162,53 +179,17 @@ def goblin():
     print()
     text = adventure_text["goblin"]
     get_text(text)
+    player_choice("goblin_live", "goblin_dead")
 
-    choice = ""
-    while choice not in {"A", "B"}:
-        try:
-            choice = getpass.getpass(
-                Fore.YELLOW +
-                "Type 'A' or 'B'".center(80, ' ')).upper()
-            print()
-            if choice == "A":
-                text = adventure_text["goblin_live"]
-                get_text(text)
-            else:
-                text = adventure_text["goblin_dead"]
-                get_text(text)
-                replay()
-        except KeyboardInterrupt:
-            print("Display interrupted by user")
 
 # cat encounter 2
-
-
 def trap():
     text = adventure_text["trap"]
     get_text(text)
+    player_choice("trap_live", "trap_dead")
 
-    choice = ""
-    while choice not in {"A", "B"}:
-        try:
-            choice = getpass.getpass(
-                Fore.YELLOW +
-                "Type 'A' or 'B'".center(80, ' ')).upper()
-            print()
-            if choice == "A":
-                text = adventure_text["trap_live"]
-                get_text(text)
-            else:
-                text = adventure_text["trap_dead"]
-                get_text(text)
-                replay()
-
-        except KeyboardInterrupt:
-            print("Display interrupted by user")
-    return
 
 # ending 1
-
-
 def safe_home():
     print()
     text = adventure_text["safe_home"]
@@ -219,8 +200,6 @@ def safe_home():
 
 # loop through steps for each branch
 # if player still alive
-
-
 def branch_a():
     for step in range(1, 4):
         branch_a_step(step)
@@ -230,9 +209,8 @@ def branch_b():
     for step in range(1, 4):
         branch_b_step(step)
 
-# call game functions for each step
-# in the branch
 
+# call game functions for each step in the branch
 
 # Branch 'a'
 def branch_a_step(step):
@@ -266,8 +244,6 @@ def branch_b_step(step):
 
 
 # start game function
-
-
 def start_game():
     # ascii heading
     color = "green"
@@ -314,12 +290,9 @@ def start_game():
                 "Press 'A' to go right or B for left".center(80, ' ')).upper()
             if user_choice == "A":
                 branch_a()
-
                 replay()
-
             elif user_choice == "B":
                 branch_b()
-
                 replay()
 
         except ValueError:
