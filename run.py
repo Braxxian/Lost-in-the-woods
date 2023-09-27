@@ -232,7 +232,7 @@ def ghost():
     text = adventure_text["ghost"]
     get_text(text)
     print()
-    player_choice("ghost_alive", "ghost_dead")
+    player_choice("ghost_live", "ghost_dead")
 
 
 # witch encounter 2
@@ -240,7 +240,18 @@ def witch():
     text = adventure_text["witch"]
     get_text(text)
     print()
-    player_choice("witch_alive", "witch_dead")
+    player_choice("witch_live", "witch_dead")
+
+# ending 2
+
+
+def slave():
+    print()
+    text = adventure_text["slave"]
+    get_text(text)
+    print()
+    replay()
+
 
 # loop through steps for each branch
 # if player still alive
@@ -323,7 +334,7 @@ def start_game():
         print(Fore.LIGHTGREEN_EX + letter, end='', flush=True)
         time.sleep(0.05)
 
-    # get user input to invoke gameplay functions
+    # get user input to decide branch
     user_choice = ""
     while user_choice not in {"A", "B"}:
         try:
