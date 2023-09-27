@@ -57,6 +57,11 @@ adventure_text = {
         retreats back into the wood
         """,
 
+    "safe_home":
+        """Your trusty cat companion guards you to the end of the wood.
+        congratulations! you survived ! You make it safely back home,
+        """,
+
     "ghost":
         """Taking the path left along a narrow track, you eventually find a
         derelict chapel with an over-grown long neglected graveyard.
@@ -71,28 +76,50 @@ adventure_text = {
     "ghost_dead":
         """figuring a ghost can't actually harm you and driven by curiosity,
         you approach the overgrown tomb. Brushing aside the ivy, you read the
-        inscription...a name....YOUR name and the date, 100 years ago! How could you
-        not have noticed the clothes you are wearing before! clothes from a
-        hundred years ago. You are dead and have been for a long time.
+        inscription...a name....YOUR name and the date, 100 years ago!
+        How could you not have noticed the clothes you are wearing before!
+        clothes from a hundred years ago.
+        You are dead and have been for a long time.
         """,
 
     "ghost_live":
         """You don't know the meaning of this spectres gesture and you don't
         intend to stick around to find out! You run as fast as possible until
-        sure of your escape. After catching your breath, you come across a stream,
-        will you [A] cross the stream or [B] feel that it is best to stick
-        to the path
+        sure of your escape. Ahead in the distance is a cottage, with a light
+        in the window, maybe they can help you?
         """,
+
+    "witch":
+        """Approaching the cottage, you see an old woman trying to draw water
+        from the well. She curses under her breath as she tries to pull up
+        the bucket, but she doesn't seem to have the strength.
+        Will you [A] offer some assistance or [B] try to sneak into the house
+        unobserved?
+        """,
+
+    "witch_live":
+        """While she is busy, you find the cottage door open and peek inside,
+        A wonderful rich aroma, irresitible. You enter, see the warm fire,
+        the fur rug and heady from the incense you lie down. 
+        """,
+
+    "witch_dead":
+        """'Why thank you kind sir', grins the toothless hag,
+        'the rope is short, you'll have to lean in!'
+        As you take the rope, the old lady throws back her hood to reveal
+        the face of a hideous witch, she cackles madly as she pushes you
+        to a wet grave. You died.
+        """,
+
 
     "slave":
-        """Placeholder:bad ending
+        """When you awake, you realize you are in love! This wonderful,
+        wizened creature with evil eyes, needs you. You are her willing
+        slave and go to get the water! Happy to serve her forever!
         """,
 
 
-    "safe_home":
-        """Your trusty cat companion guards you to the end of the wood.
-        congratulations! you survived ! You make it safely back home,
-        """,
+
 
 
 
@@ -198,8 +225,27 @@ def safe_home():
     replay()
 
 
+# branch 'b'  encounter functions
+
+# ghost encounter 1
+def ghost():
+    text = adventure_text["ghost"]
+    get_text(text)
+    print()
+    player_choice("ghost_alive", "ghost_dead")
+
+
+# witch encounter 2
+def witch():
+    text = adventure_text["witch"]
+    get_text(text)
+    print()
+    player_choice("witch_alive", "witch_dead")
+
 # loop through steps for each branch
 # if player still alive
+
+
 def branch_a():
     for step in range(1, 4):
         branch_a_step(step)
@@ -230,15 +276,12 @@ def branch_a_step(step):
 def branch_b_step(step):
     if step == 1:
         ghost()
-        replay()
 
     elif step == 2:
         witch()
-        replay()
 
     elif step == 3:
         slave()
-        replay()
 
     return
 
