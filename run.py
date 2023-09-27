@@ -1,3 +1,4 @@
+# import dependencies
 import sys
 import os
 import getpass
@@ -9,7 +10,7 @@ from colorama import Fore, Back
 
 colorama.init(autoreset=True)
 
-
+# game text dictionary
 adventure_text = {
     "goblin":
         """The path leads to a small clearing. In the center is
@@ -120,7 +121,7 @@ def replay():
 
 # branch 'a' functions
 
-
+# goblin encounter 1
 def goblin():
     print()
     text = adventure_text["goblin"]
@@ -143,6 +144,8 @@ def goblin():
 
         except KeyboardInterrupt:
             print("Display interrupted by user")
+
+# cat encounter 2
 
 
 def trap():
@@ -169,32 +172,50 @@ def trap():
             print("Display interrupted by user")
     return
 
+# ending 1
+
 
 def safe_home():
     print()
     text = adventure_text["safe_home"]
     get_text(text)
     replay()
-# functions for each branch of the story
 
-# branch a
+# loop through steps for each branch
+# if player still alive
 
 
+def branch_a():
+    for step in range(1, 4):
+        branch_a_step(step)
+
+
+def branch_b():
+    for step in range(1, 4):
+        branch_b_step(step)
+
+# call game functions for each step
+# in the branch
+
+
+# Branch 'a'
 def branch_a_step(step):
     if step == 1:
         goblin()
+        replay()
 
     elif step == 2:
         trap()
+        replay()
 
     elif step == 3:
         safe_home()
+        replay()
 
     return
 
-# branch b
 
-
+# Branch 'b'
 def branch_b_step(step):
     if step == 1:
         ghost()
@@ -210,18 +231,6 @@ def branch_b_step(step):
 
     return
 
-
-# Get steps for each branch
-
-
-def branch_a():
-    for step in range(1, 4):
-        branch_a_step(step)
-
-
-def branch_b():
-    for step in range(1, 4):
-        branch_b_step(step)
 
 # start game function
 
@@ -283,49 +292,10 @@ def start_game():
         except ValueError:
             print("Please choose 'A' or 'B'")
         except KeyboardInterrupt:
-            print("program interrupted by user")
+            print("control 'C' keyboard interupted gameplay")
 
 
 # credit: https://www.geeksforgeeks.org/what-does-the-if-__name__-__main__-do/
 # Main game loop
 if __name__ == "__main__":
     start_game()
-
-"""
-step2 = ""
-while step2 not in {"A", "a", "B", "a"}:
-    try:
-        step2 = getpass.getpass(
-            Fore.YELLOW +
-            "Press 'A' to go right or 'B' to go left".center(80, ' ')).upper()
-        print()
-        if step2 == "A":
-            text = adventure_text["step2_choiceA"]
-            get_text(text)
-        else:
-            text = adventure_text["step2_choiceB"]
-            get_text(text)
-    except KeyboardInterrupt:
-        print("Display interrupted by user")
-
-
-
-
-
-
-step3 = ""
-while step3 not in {"A", "a", "B", "a"}:
-    try:
-        step3 = getpass.getpass(
-            Fore.YELLOW +
-            "Press 'A' to run or 'B' to investigate".center(80, ' ')).upper()
-        print()
-        if step3 == "A":
-            text = adventure_text["step3_choiceA"]
-            get_text(text)
-        else:
-            text = adventure_text["step3_choiceB"]
-            get_text(text)
-    except KeyboardInterrupt:
-        print("Display interrupted by user")
-"""
