@@ -106,12 +106,12 @@ def replay():
             start_game()
         else:
             print(Fore.YELLOW +
-                  "-------------------------------------------".center(80, ' '))
+                  "-----------------------------------------".center(80, ' '))
             goodbye = "A wise choice, few who enter the wood ever live"
             center_bye = center_text(goodbye)
             print(Fore.YELLOW + center_bye)
             print(Fore.YELLOW +
-                  "-------------------------------------------".center(80, ' '))
+                  "-----------------------------------------".center(80, ' '))
             sys.exit()
     except ValueError:
         print("Please choose 'y' or 'n'")
