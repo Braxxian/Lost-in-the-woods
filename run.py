@@ -21,17 +21,17 @@ adventure_text = {
         """,
 
     "goblin_live":
-    """You take the rabbit and start eating while hastily making your
-    way further along the path before anyone returns.Looking over your
-    shoulder you see an angry goblin by the fire.That was a close one!
-    """,
+        """You take the rabbit and start eating while hastily making your
+        way further along the path before anyone returns.Looking over your
+        shoulder you see an angry goblin by the fire.That was a close one!
+        """,
 
     "goblin_dead":
-    """You call out loudly 'Hellooooo', you hear running footsteps,
-    a hideous goblin, brandishing a sharp knife, charges toward
-    you. 'Rabbit thief!' he cries as the steely blade pierces your
-    heart. You have died.
-    """,
+        """You call out loudly 'Hellooooo', you hear running footsteps,
+        a hideous goblin, brandishing a sharp knife, charges toward
+        you. 'Rabbit thief!' he cries as the steely blade pierces your
+        heart. You have died.
+        """,
 
     "trap":
         """Further along you hear a pitiful cry.As you approach the source
@@ -47,6 +47,7 @@ adventure_text = {
         into your flesh, your last thought is how if you had a jaguar friend
         you might have survived.
         """,
+
     "trap_live":
         """As fearsome a sight as the cat is, you are overcome with compassion
         and bravely approach. The jaguar seems to sense your good intention and
@@ -55,10 +56,45 @@ adventure_text = {
         to the aid of his rescuer and the bear, out-matched,
         retreats back into the wood
         """,
+
+    "ghost":
+        """Taking the path left along a narrow track, you eventually find a
+        derelict chapel with an over-grown long neglected graveyard.
+        A strange mist rises from the ground,
+        slowly taking the form of a shadowy spectre.
+        The phantom raises a pointy finger toward a tomb.
+        It seems to be inviting you to read  the tomb's inscription.
+        Will you ['A'] approach the tomb or ['B'] flee in terror
+        as fast as your legs will carry you!
+        """,
+
+    "ghost_dead":
+        """figuring a ghost can't actually harm you and driven by curiosity,
+        you approach the overgrown tomb. Brushing aside the ivy, you read the
+        inscription...a name....YOUR name and the date, 100 years ago! How could you
+        not have noticed the clothes you are wearing before! clothes from a
+        hundred years ago. You are dead and have been for a long time.
+        """,
+
+    "ghost_live":
+        """You don't know the meaning of this spectres gesture and you don't
+        intend to stick around to find out! You run as fast as possible until
+        sure of your escape. After catching your breath, you come across a stream,
+        will you [A] cross the stream or [B] feel that it is best to stick
+        to the path
+        """,
+
+    "slave":
+        """Placeholder:bad ending
+        """,
+
+
     "safe_home":
-    """Your trusty cat companion guards you to the end of the wood.
-    congratulations! you survived ! You make it safely back home,
-    """
+        """Your trusty cat companion guards you to the end of the wood.
+        congratulations! you survived ! You make it safely back home,
+        """,
+
+
 
 }
 
@@ -178,6 +214,7 @@ def safe_home():
     text = adventure_text["safe_home"]
     get_text(text)
     print()
+    replay()
 
 
 # loop through steps for each branch
@@ -204,11 +241,9 @@ def branch_a_step(step):
 
     elif step == 2:
         trap()
-        replay()
 
     elif step == 3:
         safe_home()
-        replay()
 
     return
 
