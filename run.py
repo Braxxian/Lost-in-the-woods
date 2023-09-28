@@ -222,7 +222,7 @@ def replay():
 #  get player input and print text response
 def player_choice(alive_text, dead_text):
     choice = ""
-    while True:
+    while choice not in ("A", "B"):
         try:
             choice = getpass.getpass(
                 Fore.YELLOW +
