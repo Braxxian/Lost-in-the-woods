@@ -33,6 +33,27 @@ adventure_text = {
         heart. You have died.
         """,
 
+    "stream":
+        """After a while you come to the bank of a river. The bridge
+        that once spanned the water has long since collapsed. It isn't
+        too deep to wade through, but it is cold and wet!
+        Will you ['A'] follow the river further and try to find
+        another way or ['B'] attempt to wade across?
+        """,
+
+    "stream_live":
+        """You follow the bank for a long time, until at last you come
+        to where a fallen tree spans the water. Carefully balancing on
+        the trunk, you manage to make it safely to the other side
+        """,
+
+    "stream_dead":
+        """you are not afraid of getting wet! and roll up your trousers,
+        take off your shoes and make your way through the icy flow. As you
+        do so, you disturb a venemous water snake which bites you!
+        deadly poison! You slip into unconsciousness and drown.
+        """,
+
     "trap":
         """Further along you hear a pitiful cry.As you approach the source
         of the sound, you see a large jaguar caught in a steel trap. It looks
@@ -71,7 +92,6 @@ adventure_text = {
         It seems to be inviting you to read  the tomb's inscription.
         Will you ['A'] flee in terror as fast as your legs will carry you!
         or ['B'] approach the tomb.
-        
         """,
 
     "ghost_dead":
@@ -205,7 +225,15 @@ def goblin():
     player_choice("goblin_live", "goblin_dead")
 
 
-# cat encounter 2
+# stream encounter 2
+def stream():
+    print()
+    text = adventure_text["stream"]
+    get_text(text)
+    player_choice("stream_live", "stream_dead")
+
+
+# cat encounter 3
 def trap():
     text = adventure_text["trap"]
     get_text(text)
@@ -238,9 +266,8 @@ def witch():
     print()
     player_choice("witch_live", "witch_dead")
 
+
 # ending 2
-
-
 def slave():
     print()
     text = adventure_text["slave"]
@@ -254,7 +281,7 @@ def slave():
 
 
 def branch_a():
-    for step in range(1, 4):
+    for step in range(1, 5):
         branch_a_step(step)
 
 
@@ -271,9 +298,12 @@ def branch_a_step(step):
         goblin()
 
     elif step == 2:
-        trap()
+        stream()
 
     elif step == 3:
+        trap()
+
+    elif step == 4:
         safe_home()
 
     return
