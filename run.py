@@ -106,12 +106,35 @@ adventure_text = {
     "ghost_live":
         """You don't know the meaning of this spectres gesture and you don't
         intend to stick around to find out! You run as fast as possible until
-        sure of your escape. Ahead in the distance is a cottage, with a light
-        in the window, maybe they can help you?
+        sure of your escape.
         """,
 
+    "spider":
+        """After a while your way is blocked by a huge spider sitting in a
+        web that spans the path. Will you ['A'] Find a sharp stick and try
+        to kill it? or ['B'] throw a stick into the web to distract it and
+        run quickly past?
+        """,
+
+    "spider_live":
+        """You plunge the stick into it's body, the creature writhes in pain
+        while you repeatedly stab at it. Finally it dies, leaving you safe to
+        continue your journey.
+        """,
+
+    "spider_dead":
+    """You toss a stick into a corner of it's web and the spider bounds over
+    to investigate. While it is distracted you attempt to run past, however
+    the spider soon realizes the stick is not food, but you are! The creature
+    gives chase, biting you and wrapping your paralyzed body in web.You die.
+    """,
+
+
+
     "witch":
-        """Approaching the cottage, you see an old woman trying to draw water
+        """Ahead in the distance is a cottage, with a light
+        in the window, maybe they can help you?
+        Approaching the cottage, you see an old woman trying to draw water
         from the well. She curses under her breath as she tries to pull up
         the bucket, but she doesn't seem to have the strength.
         Will you [A] try to sneak into the house unobserved?,
@@ -259,7 +282,15 @@ def ghost():
     player_choice("ghost_live", "ghost_dead")
 
 
-# witch encounter 2
+# spider encounter 2
+def spider():
+    text = adventure_text["spider"]
+    get_text(text)
+    print()
+    player_choice("spider_live", "spider_dead")
+
+
+# witch encounter 3
 def witch():
     text = adventure_text["witch"]
     get_text(text)
@@ -286,7 +317,7 @@ def branch_a():
 
 
 def branch_b():
-    for step in range(1, 4):
+    for step in range(1, 5):
         branch_b_step(step)
 
 
@@ -315,9 +346,12 @@ def branch_b_step(step):
         ghost()
 
     elif step == 2:
-        witch()
+        spider()
 
     elif step == 3:
+        witch()
+
+    elif step == 4:
         slave()
 
     return
