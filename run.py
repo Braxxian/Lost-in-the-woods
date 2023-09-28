@@ -210,6 +210,9 @@ def replay():
             print(Fore.YELLOW +
                   "-----------------------------------------".center(80, ' '))
             sys.exit()
+        else:
+            print("Please choose 'y' or 'n'")
+            replay()
     except ValueError:
         print("Please choose 'y' or 'n'")
     except KeyboardInterrupt:
@@ -235,7 +238,7 @@ def player_choice(alive_text, dead_text):
         except ValueError:
             print("invalid input, please choose 'A' or 'B' ")
         except KeyboardInterrupt:
-            print("Display interrupted by user")
+            print("Game interrupted by user")
 
 
 # branch 'a'  encounter functions
