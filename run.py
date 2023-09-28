@@ -211,10 +211,10 @@ def replay():
                   "-----------------------------------------".center(80, ' '))
             sys.exit()
         else:
-            print("Please choose 'y' or 'n'")
+            print(Fore.YELLOW + "Please choose 'y' or 'n'".center(80, ' '))
             replay()
     except ValueError:
-        print("Please choose 'y' or 'n'")
+        print(Fore.YELLOW + "Please choose 'y' or 'n'".center(80, ' '))
     except KeyboardInterrupt:
         print("program interrupted by user")
 
