@@ -222,7 +222,7 @@ def replay():
 #  get player input and print text response
 def player_choice(alive_text, dead_text):
     choice = ""
-    while choice not in {"A", "B"}:
+    while True:
         try:
             choice = getpass.getpass(
                 Fore.YELLOW +
@@ -235,6 +235,9 @@ def player_choice(alive_text, dead_text):
                 text = adventure_text[dead_text]
                 get_text(text)
                 replay()
+            else:
+                print(Fore.YELLOW +
+                      "invalid input".center(80, ' '))
         except ValueError:
             print("invalid input, please choose 'A' or 'B' ")
         except KeyboardInterrupt:
