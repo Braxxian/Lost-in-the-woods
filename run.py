@@ -69,8 +69,9 @@ adventure_text = {
         slowly taking the form of a shadowy spectre.
         The phantom raises a pointy finger toward a tomb.
         It seems to be inviting you to read  the tomb's inscription.
-        Will you ['A'] approach the tomb or ['B'] flee in terror
-        as fast as your legs will carry you!
+        Will you ['A'] flee in terror as fast as your legs will carry you!
+        or ['B'] approach the tomb.
+        
         """,
 
     "ghost_dead":
@@ -93,14 +94,14 @@ adventure_text = {
         """Approaching the cottage, you see an old woman trying to draw water
         from the well. She curses under her breath as she tries to pull up
         the bucket, but she doesn't seem to have the strength.
-        Will you [A] offer some assistance or [B] try to sneak into the house
-        unobserved?
+        Will you [A] try to sneak into the house unobserved?,
+        or [B] offer some assistance
         """,
 
     "witch_live":
         """While she is busy, you find the cottage door open and peek inside,
         A wonderful rich aroma, irresitible. You enter, see the warm fire,
-        the fur rug and heady from the incense you lie down. 
+        the fur rug and heady from the incense you lie down.
         """,
 
     "witch_dead":
@@ -108,7 +109,7 @@ adventure_text = {
         'the rope is short, you'll have to lean in!'
         As you take the rope, the old lady throws back her hood to reveal
         the face of a hideous witch, she cackles madly as she pushes you
-        to a wet grave. You died.
+        into the well and a watery grave. You died.
         """,
 
 
@@ -117,11 +118,6 @@ adventure_text = {
         wizened creature with evil eyes, needs you. You are her willing
         slave and go to get the water! Happy to serve her forever!
         """,
-
-
-
-
-
 
 }
 
@@ -333,15 +329,22 @@ def start_game():
     for letter in center_line3:
         print(Fore.LIGHTGREEN_EX + letter, end='', flush=True)
         time.sleep(0.05)
+    print()
+
+    line4 = "There are two paths leading into the wood"
+    center_line4 = center_text(line4)
+    for letter in center_line4:
+        print(Fore.LIGHTGREEN_EX + letter, end='', flush=True)
+        time.sleep(0.05)
+    print()
 
     # get user input to decide branch
     user_choice = ""
     while user_choice not in {"A", "B"}:
         try:
-            print()
             user_choice = getpass.getpass(
                 Fore.YELLOW +
-                "Press 'A' to go right or B for left".center(80, ' ')).upper()
+                "Press 'A' for right or 'B' for left".center(80, ' ')).upper()
             if user_choice == "A":
                 branch_a()
                 replay()
