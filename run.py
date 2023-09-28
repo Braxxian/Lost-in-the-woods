@@ -413,9 +413,13 @@ def start_game():
     user_choice = ""
     while user_choice not in {"A", "B"}:
         try:
+            enter = "Hit the enter key to confirm your choices"
+            print()
+            print(Fore.YELLOW + enter.center(80, ' '))
             user_choice = getpass.getpass(
                 Fore.YELLOW +
                 "Press 'A' for right or 'B' for left".center(80, ' ')).upper()
+
             if user_choice == "A":
                 branch_a()
                 replay()
