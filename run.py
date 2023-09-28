@@ -200,6 +200,7 @@ def replay():
             "Play again? (y/n):".center(80, ' ')).lower()
 
         if play_again == 'y':
+            clear_terminal()
             start_game()
         elif play_again == 'n':
             print(Fore.YELLOW +
