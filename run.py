@@ -217,8 +217,11 @@ def replay():
     except ValueError:
         print(Fore.YELLOW + "Please choose 'y' or 'n'".center(80, ' '))
     except KeyboardInterrupt:
-        print("program interrupted by user")
-        time.sleep(1)
+        print()
+        print()
+        user_interupt = "Game interrupted by user"
+        print(Fore.RED + user_interupt.center(80, ' '))
+        time.sleep(2)
         sys.exit()
 
 #  get player input and print text response
@@ -245,8 +248,12 @@ def player_choice(alive_text, dead_text):
         except ValueError:
             print("invalid input, please choose 'A' or 'B' ")
         except KeyboardInterrupt:
-            print("Game interrupted by user")
-            sys.exit()
+            print()
+            print()
+            user_interupt = "Game interrupted by user"
+        print(Fore.RED + user_interupt.center(80, ' '))
+        time.sleep(2)
+        sys.exit()
 
 # branch 'a'  encounter functions
 
@@ -338,6 +345,7 @@ def branch_b():
 # Branch 'a'
 def branch_a_step(step):
     if step == 1:
+        print()
         goblin()
 
     elif step == 2:
@@ -355,6 +363,7 @@ def branch_a_step(step):
 # Branch 'b'
 def branch_b_step(step):
     if step == 1:
+        print()
         ghost()
 
     elif step == 2:
@@ -423,8 +432,7 @@ def start_game():
             print(Fore.YELLOW + enter.center(80, ' '))
             user_choice = getpass.getpass(
                 Fore.YELLOW +
-                "Press 'A' for right or 'B' for left\n\r".center(80, ' ')).upper()
-
+                "Press 'A' for right or 'B' for left".center(80, ' ')).upper()
             if user_choice == "A":
                 branch_a()
                 replay()
@@ -435,7 +443,10 @@ def start_game():
         except ValueError:
             print("Please choose 'A' or 'B'")
         except KeyboardInterrupt:
-            print(Fore.RED + "control 'C' keyboard interupted gameplay".center(80, ' '))
+            print()
+            print()
+            warning = "control 'C' keyboard interupted gameplay"
+            print(Fore.RED + warning.center(80, ' '))
 
 
 # credit: https://www.geeksforgeeks.org/what-does-the-if-__name__-__main__-do/
