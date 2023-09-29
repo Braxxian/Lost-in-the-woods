@@ -251,9 +251,9 @@ def player_choice(alive_text, dead_text):
             print()
             print()
             user_interupt = "Game interrupted by user"
-        print(Fore.RED + user_interupt.center(80, ' '))
-        time.sleep(2)
-        sys.exit()
+            print(Fore.RED + user_interupt.center(80, ' '))
+            time.sleep(2)
+            sys.exit()
 
 # branch 'a'  encounter functions
 
