@@ -1,6 +1,6 @@
 # Lost in the woods
 
-A text based adventure game. The player must navigate the options of the story to arrive at one of two possible endings. The game code is written in Python and uses the code institute template for deployemnt to Heroku cloud hosting platform.
+A text based adventure game. The player must navigate the options of the story to arrive at one of two possible endings. The game code is written in Python and uses the code institute template for deployment to Heroku cloud hosting platform.
 
 ## Live Site
 

@@ -218,16 +218,19 @@ def replay():
         print(Fore.YELLOW + "Please choose 'y' or 'n'".center(80, ' '))
     except KeyboardInterrupt:
         print("program interrupted by user")
-
+        time.sleep(1)
+        sys.exit()
 
 #  get player input and print text response
+
+
 def player_choice(alive_text, dead_text):
     choice = ""
     while choice not in ("A", "B"):
         try:
             choice = getpass.getpass(
                 Fore.YELLOW +
-                "Make your choice 'A' or 'B'".center(80, ' ')).upper()
+                "Make your choice 'A' or 'B'\n".center(80, ' ')).upper()
             print()
             if choice == "A":
                 text = adventure_text[alive_text]
@@ -243,11 +246,13 @@ def player_choice(alive_text, dead_text):
             print("invalid input, please choose 'A' or 'B' ")
         except KeyboardInterrupt:
             print("Game interrupted by user")
-
+            sys.exit()
 
 # branch 'a'  encounter functions
 
 # goblin encounter 1
+
+
 def goblin():
     print()
     text = adventure_text["goblin"]
@@ -418,7 +423,7 @@ def start_game():
             print(Fore.YELLOW + enter.center(80, ' '))
             user_choice = getpass.getpass(
                 Fore.YELLOW +
-                "Press 'A' for right or 'B' for left".center(80, ' ')).upper()
+                "Press 'A' for right or 'B' for left\n\r".center(80, ' ')).upper()
 
             if user_choice == "A":
                 branch_a()
@@ -430,7 +435,7 @@ def start_game():
         except ValueError:
             print("Please choose 'A' or 'B'")
         except KeyboardInterrupt:
-            print("control 'C' keyboard interupted gameplay")
+            print(Fore.RED + "control 'C' keyboard interupted gameplay".center(80, ' '))
 
 
 # credit: https://www.geeksforgeeks.org/what-does-the-if-__name__-__main__-do/
