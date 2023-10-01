@@ -26,9 +26,9 @@ The player is given a short intro and then informed to make a choice of 'A' or '
 ## Planning & Development
 ### User stories
 
-* As a user I want an entertaining game that can be enjoyed in short leisure breaks
-* As a user I want to be able to play the game across all my different devices
-* As a user I want to be able to easily learn how to play
+* As a user I enjoy retro-style text adventures
+* As a user I want to be able to play the game on desktop, laptop or tablet.
+* As a user I am interested in basic python programming.
 * As a user I want a demonstration of how basic python can be used to create a text adventure
 
 ### Site Owner goals
@@ -48,21 +48,35 @@ The player is given a short intro and then informed to make a choice of 'A' or '
 
 <img src="README_Docs/Game_open.JPG">
 
-### Algorithm
+## Early Stages
 
-The game flow was first sketched out in a pseudo-code algorithm
+### Original Design
+
+The original design concept was based purely on story telling. Reading text from a file. Also the path tree of the storyline was more complex.
+
+Algorithm
+
+<img src="README_Docs/al_og.PNG">
+
+Flowchart
+
+<img src="README_Docs/flowchart_og.PNG">
+
+## Revised design
+
+The original model was stream-lined into two distinct paths. This made for more efficient code and better story rationale.
+
+algorithm
 
 <img src="README_Docs/algorithm.JPG">
 
-### Flowchart
-
-The game visually realized as a mind map
+flowchart
 
 <img src="README_Docs/flowchart.JPG">
 
-### future development
+## future development
 
-I would like to add more encounters in the story. Also I would like to invite others to collaborate in turning the 'proof of concept' into a fully realized game.
+I would like to add more encounters in the story. Also I would like to develop the complexity of the story branches
 
 # Testing
 
@@ -165,6 +179,7 @@ Thanks to:-
 
 [The code Institute](https://codeinstitute.net/ie/full-stack-software-development-diploma/) : For the course content.
 
+My fellow students for their kindness and support
 
 
 
